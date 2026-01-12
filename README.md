@@ -128,6 +128,8 @@ Expected output
 - Per-sample MetaPhlAn taxonomic tables
 - Optional merged abundance tables (depending on script settings)
 
+---
+
 ## Workflow B — Mammary epithelial cell RNA-seq (in vitro)
 ### B1. RNA-seq processing
 Run the RNA-seq workflow wrapper.
@@ -149,6 +151,8 @@ bash run_kallisto.sh \
 Expected output
 - Transcript- or gene-level abundance estimates
 - Log files for quality control and troubleshooting
+
+---
 
 ## Workflow C — Figures and visualization
 Reproduce manuscript-style figures using the R plotting scripts.
@@ -179,6 +183,9 @@ Suggested project structure (optional)
     ├── run_kallisto.sh
     └── codes for Figure plot.R
 ```
+
+---
+
 ## Reproducibility checklist
 - Record software versions (conda env export, sessionInfo() in R)
 
@@ -188,12 +195,18 @@ Suggested project structure (optional)
 
 - Generate merged abundance matrices for downstream analyses (alpha/beta diversity, longitudinal modeling)
 
+---
+
 ## Citation
 If you use this workflow or code in your research, please cite the associated manuscript (DOI to be added upon publication).
 Until then, please cite this GitHub repository.
 
+---
+
 ## License
 This project is released under the GPL-3.0 License.
+
+---
 
 ## Contact
 Shengtao Gao
