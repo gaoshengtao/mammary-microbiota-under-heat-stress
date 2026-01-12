@@ -65,9 +65,8 @@ bash hostfree_bowtie.sh \
   -2 results/01_trimmed/sample.clean.R2.fastq.gz \
   -x /path/to/host_bowtie2_index \
   -o results/02_hostfree/
-Expected output
 
-host-depleted paired FASTQ files (recommended input for MetaPhlAn)
+Expected output：host-depleted paired FASTQ files (recommended input for MetaPhlAn)
 
 mapping logs/statistics (useful for QC reporting)
 
@@ -79,9 +78,8 @@ Example (pseudo-usage):
 bash metaphlan-rawdata.sh \
   -i results/02_hostfree/ \
   -o results/03_metaphlan/
-Expected output
 
-MetaPhlAn taxonomic tables (per-sample)
+Expected output：MetaPhlAn taxonomic tables (per-sample)
 
 optional merged abundance tables (depending on your script settings)
 
@@ -94,6 +92,7 @@ Example (pseudo-usage):
 bash run_RNAseq.sh \
   -i rnaseq_fastq/ \
   -o results/rnaseq/
+
 B2) Quantification with kallisto (optional / recommended for speed)
 Use run_kallisto.sh for pseudoalignment-based quantification.
 
@@ -103,9 +102,8 @@ bash run_kallisto.sh \
   -i rnaseq_fastq/ \
   -x /path/to/kallisto_index \
   -o results/04_kallisto/
-Expected output
 
-transcript/gene abundance estimates
+Expected output：transcript/gene abundance estimates
 
 logs for QC and troubleshooting
 
