@@ -60,8 +60,6 @@ Use hostfree_bowtie.sh to remove host-derived reads by mapping to the host refer
 
 Example (pseudo-usage):
 
-bash
-复制代码
 bash hostfree_bowtie.sh \
   -1 results/01_trimmed/sample.clean.R1.fastq.gz \
   -2 results/01_trimmed/sample.clean.R2.fastq.gz \
@@ -78,8 +76,6 @@ Use metaphlan-rawdata.sh to generate taxonomic profiles.
 
 Example (pseudo-usage):
 
-bash
-复制代码
 bash metaphlan-rawdata.sh \
   -i results/02_hostfree/ \
   -o results/03_metaphlan/
@@ -95,8 +91,6 @@ run_RNAseq.sh typically handles trimming + alignment/counting OR provides an orc
 
 Example (pseudo-usage):
 
-bash
-复制代码
 bash run_RNAseq.sh \
   -i rnaseq_fastq/ \
   -o results/rnaseq/
@@ -105,8 +99,6 @@ Use run_kallisto.sh for pseudoalignment-based quantification.
 
 Example (pseudo-usage):
 
-bash
-复制代码
 bash run_kallisto.sh \
   -i rnaseq_fastq/ \
   -x /path/to/kallisto_index \
@@ -122,17 +114,12 @@ Use codes for Figure plot.R to reproduce manuscript-style figures.
 
 Example
 
-bash
-复制代码
 Rscript "codes for Figure plot.R"
 If your plotting script expects specific input filenames, consider adding a small config.R or documenting the expected input table format (see “Reproducibility” below).
 
 Suggested project structure (optional but clean)
 If you want a tidy layout:
 
-text
-复制代码
-.
 ├── data/
 │   ├── metagenome_fastq/
 │   ├── rnaseq_fastq/
