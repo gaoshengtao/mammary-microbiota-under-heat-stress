@@ -98,3 +98,107 @@ bash trimmomatic.sh \
   -1 sample_R1.fastq.gz \
   -2 sample_R2.fastq.gz \
   -o results/01_trimmed/
+```
+Expected output
+- Cleaned paired-end FASTQ files for downstream profiling
+
+### A2. Host read removal (host depletion)
+Remove host-derived reads by mapping to the host reference genome.
+
+```bash
+bash hostfree_bowtie.sh \
+  -1 results/01_trimmed/sample.clean.R1.fastq.gz \
+  -2 results/01_trimmed/sample.clean.R2.fastq.gz \
+  -x /path/to/host_bowtie2_index \
+  -o results/02_hostfree/
+```
+Expected output
+- Host-depleted paired FASTQ files (recommended input for MetaPhlAn)
+- Mapping statistics and logs for quality assessment
+
+### A3. Taxonomic profiling (MetaPhlAn)
+Generate taxonomic profiles using MetaPhlAn.
+
+```bash
+bash metaphlan-rawdata.sh \
+  -i results/02_hostfree/ \
+  -o results/03_metaphlan/
+```
+Expected output
+- Per-sample MetaPhlAn taxonomic tables
+- Optional merged abundance tables (depending on script settings)
+
+## Workflow B — Mammary epithelial cell RNA-seq (in vitro)
+### B1. RNA-seq processing
+Run the RNA-seq workflow wrapper.
+
+```bash
+bash run_RNAseq.sh \
+  -i rnaseq_fastq/ \
+  -o results/rnaseq/
+```
+### B2. Quantification with kallisto (optional / recommended)
+Perform pseudoalignment-based RNA-seq quantification.
+
+```bash 
+bash run_kallisto.sh \
+  -i rnaseq_fastq/ \
+  -x /path/to/kallisto_index \
+  -o results/04_kallisto/
+```
+Expected output
+- Transcript- or gene-level abundance estimates
+- Log files for quality control and troubleshooting
+
+## Workflow C — Figures and visualization
+Reproduce manuscript-style figures using the R plotting scripts.
+
+```bash
+Rscript "codes for Figure plot.R"
+```
+If the plotting script expects specific input filenames, consider documenting the input table format or adding a small config.R file.
+
+Suggested project structure (optional)
+```text
+.
+├── data/
+│   ├── metagenome_fastq/
+│   ├── rnaseq_fastq/
+│   └── metadata/
+├── results/
+│   ├── 01_trimmed/
+│   ├── 02_hostfree/
+│   ├── 03_metaphlan/
+│   ├── rnaseq/
+│   └── figures/
+└── scripts/
+    ├── trimmomatic.sh
+    ├── hostfree_bowtie.sh
+    ├── metaphlan-rawdata.sh
+    ├── run_RNAseq.sh
+    ├── run_kallisto.sh
+    └── codes for Figure plot.R
+```
+## Reproducibility checklist
+- Record software versions (conda env export, sessionInfo() in R)
+
+- Maintain a complete sample metadata table (metadata.tsv)
+
+- Save host depletion statistics and sequencing depth summaries
+
+- Generate merged abundance matrices for downstream analyses (alpha/beta diversity, longitudinal modeling)
+
+## Citation
+If you use this workflow or code in your research, please cite the associated manuscript (DOI to be added upon publication).
+Until then, please cite this GitHub repository.
+
+## License
+This project is released under the GPL-3.0 License.
+
+## Contact
+Shengtao Gao
+📧 shengtaogao@163.com
+
+
+
+
