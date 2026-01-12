@@ -55,7 +55,7 @@ Expected output
 
 cleaned paired FASTQ files for downstream profiling
 
-A2) Host read removal (host depletion)
+### A2) Host read removal (host depletion)
 Use hostfree_bowtie.sh to remove host-derived reads by mapping to the host reference.
 
 Example (pseudo-usage):
@@ -70,7 +70,7 @@ Expected output：host-depleted paired FASTQ files (recommended input for MetaPh
 
 mapping logs/statistics (useful for QC reporting)
 
-A3) Taxonomic profiling (MetaPhlAn)
+### A3) Taxonomic profiling (MetaPhlAn)
 Use metaphlan-rawdata.sh to generate taxonomic profiles.
 
 Example (pseudo-usage):
@@ -83,8 +83,8 @@ Expected output：MetaPhlAn taxonomic tables (per-sample)
 
 optional merged abundance tables (depending on your script settings)
 
-Workflow B — Mammary epithelial cell RNA-seq (in vitro)
-B1) RNA-seq processing (wrapper)
+## Workflow B — Mammary epithelial cell RNA-seq (in vitro)
+### B1) RNA-seq processing (wrapper)
 run_RNAseq.sh typically handles trimming + alignment/counting OR provides an orchestrated workflow.
 
 Example (pseudo-usage):
@@ -93,7 +93,7 @@ bash run_RNAseq.sh \
   -i rnaseq_fastq/ \
   -o results/rnaseq/
 
-B2) Quantification with kallisto (optional / recommended for speed)
+### B2) Quantification with kallisto (optional / recommended for speed)
 Use run_kallisto.sh for pseudoalignment-based quantification.
 
 Example (pseudo-usage):
